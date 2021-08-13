@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 setlocal
 set "proj_dir=D:\PoeAssetsExporter"
 set "output=%proj_dir%\output"
@@ -7,7 +7,7 @@ set "PoeAssetUpdater_path=%proj_dir%\PoeAssetUpdater"
 set "LibBundle_path=%proj_dir%\LibBundle"
 set "poe_bundle_path=D:\Steam\steamapps\common\Path of Exile\Bundles2"
 
-pushd "proj_dir"
+pushd "%proj_dir%"
 
 mkdir "%output%"
 copy /B "%poe_bundle_path%\_.index.bin" "%output%\_.index.bin" >nul
@@ -32,11 +32,9 @@ mkdir "%PoeAssetUpdater_path%\cache"
 
 @echo | "%PoeAssetUpdater_path%\PoEAssetUpdater\PoEAssetUpdater.exe" "%poe_bundle_path%" "%output_tmp%" "%PoeAssetUpdater_path%\cache" "%PoeAssetUpdater_path%\resources\stable.py"
 
-FOR /d %%a IN ("%output_tmp%\*") DO RD /S /Q "%%a"
-FOR %%a IN ("%output_tmp%\*") DO IF /i NOT "%%~nxa"=="base-item-types-v2.json" DEL "%%a"
+copy "%output_tmp%\base-item-types-v2.json" "%output%\base_items_lookup.json" >nul
+copy "%output_tmp%\unique-artname-mapping.json" "%output%\unique_items_lookup.json" >nul
 
-copy "%output_tmp%\base-item-types-v2.json" "%output%\items_lookup.json" >nul
-
-rd /S /Q "%output_tmp%" 
+rd /Q "%output_tmp%" 
 
 popd
