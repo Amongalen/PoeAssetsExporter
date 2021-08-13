@@ -35,6 +35,6 @@ mkdir "%PoeAssetUpdater_path%\cache"
 copy "%output_tmp%\base-item-types-v2.json" "%output%\base_items_lookup.json" >nul
 copy "%output_tmp%\unique-artname-mapping.json" "%output%\unique_items_lookup.json" >nul
 
-rd /Q "%output_tmp%" 
+rd /S /Q "%output_tmp%" 
 
 popd
