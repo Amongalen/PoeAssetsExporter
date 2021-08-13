@@ -17,4 +17,6 @@ A simple script that streamlines exporting 2d item assets from PoE Bundle (comin
 5. Run the script.
 6. Output is put in a folder pointed to by `output` variable.
 
+##### Note! Flask assets have 3 layers next to each other in a single file. 
+
 #### Warning! The script performs a cleanup afterwards. Make sure variables point to folders that doesn't contain anything else! Folders pointed to by `output` and `output_tmp` variables get cleaned.
